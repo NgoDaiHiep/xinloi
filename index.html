@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Xin lỗi Thu Hiền 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#2b2d2f;
+    --card:#343436;
+    --accent:#ff6b81;
+    --btn-pink:#ff5c8a;
+    --btn-dark:#402022;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(180deg,#2a2b2d 0%, #262728 100%);
+    color:#fff;
+    font-family:'Quicksand',system-ui,Arial;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:1000px;
+    text-align:center;
+  }
+
+  h1{
+    font-size:48px;
+    color:var(--accent);
+    margin:8px 0 6px;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  }
+
+  p.sub{
+    color:#ffb3c1;
+    margin:0 0 18px;
+    font-weight:600;
+  }
+
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.5);
+    position:relative;
+  }
+
+  .cute-img{
+  width:180px;
+  max-width:45%;
+  display:block;
+  margin: 10px auto 18px;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+  }
+
+   @media (max-width:560px){
+  h1{ font-size:28px }
+  .cute-img{ width:140px }  /* ảnh nhỏ hơn trên điện thoại */
+  .buttons{ height:160px }
+  #btn-no{ left:20px; top:70px }
+  }
+
+  .buttons{
+    margin-top:12px;
+    position:relative;
+    height:120px; /* khu vực nút */
+  }
+
+  .btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:30px;
+    font-weight:700;
+    cursor:pointer;
+    user-select:none;
+    border:2px solid rgba(255,255,255,0.06);
+    transition:transform .18s ease, box-shadow .18s ease;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  }
+
+  .btn:active{ transform:translateY(2px) }
+
+  .btn-yes{
+    background:linear-gradient(180deg, #ff9fb6, #ff5c8a);
+    color:white;
+    margin-left:18px;
+    font-size:16px;
+  }
+
+  /* nút KHÔNG là absolute để dịch chuyển */
+  #btn-no{
+    position:absolute;
+    left:calc(50% - 220px); /* bắt đầu bên trái */
+    top: 20px;
+    background:linear-gradient(180deg,#6b1f28,#a6373e);
+    color:#fff;
+    font-size:16px;
+    padding:12px 20px;
+    border-radius:30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  }
+
+  /* kiểu nhỏ đẹp cho tooltip text */
+  .hint{ font-size:13px; color:#f6b8c2; margin-top:8px }
+
+  /* modal */
+  .modal {
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.55);
+    visibility:hidden;
+    opacity:0;
+    transition:opacity .18s ease, visibility .18s;
+  }
+  .modal.show{ visibility:visible; opacity:1; }
+  .modal-card{
+    background:linear-gradient(180deg,#fff 0%, #ffeef3 100%);
+    color:#5a2230;
+    padding:22px;
+    border-radius:14px;
+    min-width:280px;
+    max-width:86%;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  }
+  .modal h2{ margin:6px 0 4px; color:#c92b57 }
+  .modal p{ margin:6px 0 12px; color:#7a3846 }
+  .close-btn{
+    margin-top:6px;
+    background:var(--btn-pink);
+    color:#fff;
+    padding:10px 14px;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+  }
+
+  /* typing text style */
+  .typed {
+    font-size:16px;
+    color:#fff;
+    max-width:760px;
+    margin:10px auto 0;
+    line-height:1.5;
+    min-height:48px;
+    white-space:pre-line;
+  }
+
+  @media (max-width:560px){
+    h1{ font-size:28px }
+    .cute-img{ width:210px }
+    .buttons{ height:160px }
+    #btn-no{ left:20px; top:70px }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Anh xin lỗi Thu Hiền mò 👉👈</h1>
+      <p class="sub">Nếu em không chọn hoặc thoát là em tha lỗi cho anh</p>
+
+      <!-- bạn có thể đổi ảnh thành ảnh bạn thích -->
+      <img class="cute-img" src="xinloi.jpg" alt="cute" />
+
+      <div class="typed" id="typed"></div>
+
+      <div class="buttons" id="area">
+        <button id="btn-no" class="btn" title="Đừng bấm em nhé">Không 😢</button>
+        <button id="btn-yes" class="btn btn-yes">Tạm tha 😻</button>
+      </div>
+
+      <div class="hint">(Thử bấm "Không" xem...)</div>
+    </div>
+  </div>
+
+  <!-- popup modal khi bấm có -->
+  <div class="modal" id="modal">
+    <div class="modal-card" id="modalCard">
+      <h2>Anh biết rồi 💖</h2>
+      <p id="modalText">Cảm ơn em đã cho anh cơ hội. Anh sẽ cố gắng hơn mỗi ngày nhé!</p>
+      <button class="close-btn" id="closeBtn">Em cũng iu anh 💌</button>
+    </div>
+  </div>
+
+<script>
+/* ========== TYPING EFFECT (chữ xin lỗi/chân thành) ========== */
+const lines = [
+  "Em yêu à...",
+  "Anh biết anh đã khiến em buồn, anh rất rất xin lỗi 😔.",
+  "Anh không hoàn hảo nhưng anh sẽ cố gắng để tốt hơn vì em.",
+  "Mong em cho anh cơ hội sửa sai 💕"
+];
+const typedEl = document.getElementById('typed');
+
+async function runTyping() {
+  for (const line of lines) {
+    await typeLine(line);
+    await wait(500);
+    appendLineBreak();
+  }
+}
+function typeLine(text){
+  return new Promise(resolve=>{
+    let i=0;
+    const t = setInterval(()=>{
+      typedEl.textContent += text[i] ?? '';
+      i++;
+      if(i>text.length){
+        clearInterval(t);
+        resolve();
+      }
+    }, 40);
+  });
+}
+function appendLineBreak(){ typedEl.textContent += '\n\n'; }
+function wait(ms){ return new Promise(r=>setTimeout(r, ms)); }
+runTyping();
+
+/* ========== BUTTON AVOID LOGIC (chỉ né khi định bấm) ========== */
+const btnNo = document.getElementById('btn-no');
+const area = document.getElementById('area');
+
+function randomPosWithin(containerRect, btnRect){
+  const padding = 8;
+  const maxLeft = Math.max(0, containerRect.width - btnRect.width - padding);
+  const maxTop = Math.max(0, containerRect.height - btnRect.height - padding);
+  const left = Math.floor(Math.random() * (maxLeft + 1));
+  const top  = Math.floor(Math.random() * (maxTop + 1));
+  return {left, top};
+}
+function moveButtonSmooth(){
+  const containerRect = area.getBoundingClientRect();
+  const btnRect = btnNo.getBoundingClientRect();
+  const pos = randomPosWithin(containerRect, btnRect);
+  btnNo.style.transition = 'transform 220ms ease';
+  btnNo.style.transform = `translate(${pos.left}px, ${pos.top}px)`;
+}
+
+// Chỉ né 1 lần khi chuột tới gần
+document.addEventListener('mousemove', (e)=>{
+  const b = btnNo.getBoundingClientRect();
+  const dx = Math.abs(e.clientX - (b.left + b.width/2));
+  const dy = Math.abs(e.clientY - (b.top + b.height/2));
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  if(dist < 120) moveButtonSmooth();
+});
+btnNo.addEventListener('mouseenter', moveButtonSmooth);
+btnNo.addEventListener('touchstart', (ev)=>{
+  ev.preventDefault();
+  moveButtonSmooth();
+}, {passive:false});
+btnNo.addEventListener('click', (e)=>{
+  e.preventDefault();
+  e.stopPropagation();
+  moveButtonSmooth();
+});
+btnNo.addEventListener('focus', moveButtonSmooth);
+
+/* ========== MODAL ========== */
+const btnYes = document.getElementById('btn-yes');
+const modal = document.getElementById('modal');
+const closeBtn = document.getElementById('closeBtn');
+btnYes.addEventListener('click', ()=> modal.classList.add('show'));
+closeBtn.addEventListener('click', ()=> modal.classList.remove('show'));
+</script>
+</body>
+</html>
